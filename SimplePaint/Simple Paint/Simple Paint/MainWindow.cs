@@ -46,6 +46,9 @@ namespace Simple_Paint
             IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle(400, 100, 200, 300, Color.BlueViolet, Color.IndianRed, 1);
             listOfShapes.Add(isoscelesTriangle);
 
+            RightTriangle rightTriangle = new RightTriangle(30, 500, 200, 300, Color.Blue, Color.Blue, 1);
+            listOfShapes.Add(rightTriangle);
+
             listOfShapes.Draw(graphics);
         }
     }
