@@ -1,2 +1,10 @@
 D:\ООТПИСП\SimplePaint\Simple Paint\Simple Paint\bin\Debug\Simple Paint.exe.config
 D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\bin\Debug\Simple Paint.exe.config
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\bin\Debug\Simple Paint.exe
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\bin\Debug\Simple Paint.pdb
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple Paint.csprojResolveAssemblyReference.cache
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple_Paint.Properties.Resources.resources
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple Paint.csproj.GenerateResource.Cache
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple Paint.exe
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple Paint.pdb
+D:\ООТПИСП\Object-Oriented-Programming\SimplePaint\Simple Paint\Simple Paint\obj\Debug\Simple_Paint.MainWindow.resources
