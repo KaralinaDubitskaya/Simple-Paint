@@ -10,6 +10,12 @@ namespace Simple_Paint
     public abstract class Shape
     {
         protected Pen pen;
+
+        public Shape(Color color, float penWidth)
+        {
+            pen = new Pen(color, penWidth);
+        }
+
         public abstract void Draw(Graphics graphics);
     }
 }

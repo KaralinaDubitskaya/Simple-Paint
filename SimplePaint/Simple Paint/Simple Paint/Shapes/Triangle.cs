@@ -7,14 +7,13 @@ using System.Drawing;
 
 namespace Simple_Paint
 {
-    public abstract class Triangle: Shape
+    public abstract class Triangle : Shape
     {
         protected Point[] vertices;
         protected Brush brush;
 
-        public Triangle(Color color, Color fillColor, float penWidth)
+        public Triangle(Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
-            pen = new Pen(color, penWidth);
             brush = new SolidBrush(fillColor);
         }
 

@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Simple_Paint
 {
-    public class Line: Shape
+    public class Line : Shape
     {
         // Coordinates of the Line start point.
         private int x1;
@@ -17,15 +17,13 @@ namespace Simple_Paint
         private int x2;
         private int y2;
 
-        public Line(int x1, int y1, int x2, int y2, Color color, float penWidth)
+        public Line(int x1, int y1, int x2, int y2, Color color, float penWidth) : base(color, penWidth)
         {
             this.x1 = x1;
             this.y1 = y1;
             
             this.x2 = x2;
             this.y2 = y2;
-
-            pen = new Pen(color, penWidth);
         }
 
         public override void Draw(Graphics graphics)

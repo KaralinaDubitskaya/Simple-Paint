@@ -40,7 +40,7 @@ namespace Simple_Paint
             Ellipse ellipse = new Ellipse(535, 410, 1100, 20, Color.Purple, Color.Red, 2);
             listOfShapes.Add(ellipse);
 
-            Rectangle rectangle = new Rectangle(432, 52, 600, 240, Color.BlueViolet, Color.IndianRed, 5);
+            Rectangle rectangle = new Rectangle(432, 572, 60, 24, Color.BlueViolet, Color.IndianRed, 5);
             listOfShapes.Add(rectangle);
 
             IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle(400, 100, 200, 300, Color.BlueViolet, Color.IndianRed, 1);
@@ -49,6 +49,12 @@ namespace Simple_Paint
             RightTriangle rightTriangle = new RightTriangle(30, 500, 200, 300, Color.Blue, Color.Blue, 1);
             listOfShapes.Add(rightTriangle);
 
+            Square square = new Square(300, 300, 100, 40, Color.Black, Color.Blue, 2);
+            listOfShapes.Add(square);
+
+            Circle circle = new Circle(500, 600, 130, 440, Color.Black, Color.Blue, 2);
+            listOfShapes.Add(circle);
+            
             listOfShapes.Draw(graphics);
         }
     }
