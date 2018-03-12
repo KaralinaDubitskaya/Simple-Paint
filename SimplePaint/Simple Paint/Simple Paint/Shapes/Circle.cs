@@ -11,15 +11,29 @@ namespace Simple_Paint
     {
         private float diameter;
 
-        public Circle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(x1, y1, x2, y2, color, fillColor, penWidth)
+        public Circle(Color color, Color fillColor, float penWidth) : base(color, fillColor, penWidth) { }
+
+        public Circle(Point start, Point end, Color color, Color fillColor, float penWidth) : base(start, end, color, fillColor, penWidth)
         {
-            diameter = Math.Max(this.x2 - this.x1, this.y2 - this.y1);
+            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillEllipse(brush, x1, y1, diameter, diameter);
-            graphics.DrawEllipse(pen, x1, y1, diameter, diameter);
+            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, diameter, diameter);
+        }
+
+        public override void Draw(Graphics graphics, Point start, Point end)
+        {
+            leftPoint.X = Math.Min(start.X, end.X);
+            leftPoint.Y = Math.Min(start.Y, end.Y);
+
+            rightPoint.X = Math.Max(start.X, end.X);
+            rightPoint.Y = Math.Max(start.Y, end.Y);
+
+            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, diameter, diameter);
         }
     }
 }

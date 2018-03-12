@@ -38,14 +38,6 @@
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnLine = new System.Windows.Forms.ToolStripButton();
-            this.btnEllipse = new System.Windows.Forms.ToolStripButton();
-            this.btnCircle = new System.Windows.Forms.ToolStripButton();
-            this.btnRectangle = new System.Windows.Forms.ToolStripButton();
-            this.btnSquare = new System.Windows.Forms.ToolStripButton();
-            this.btnIsoscelesTriangle = new System.Windows.Forms.ToolStripButton();
-            this.btnRightTriangle = new System.Windows.Forms.ToolStripButton();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.btnColor = new System.Windows.Forms.Button();
             this.btnFillColor = new System.Windows.Forms.Button();
@@ -55,15 +47,21 @@
             this.penSize = new System.Windows.Forms.NumericUpDown();
             this.btnDemo = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.btnLine = new System.Windows.Forms.Button();
+            this.btnEllipse = new System.Windows.Forms.Button();
+            this.btnCircle = new System.Windows.Forms.Button();
+            this.btnRectangle = new System.Windows.Forms.Button();
+            this.btnSquare = new System.Windows.Forms.Button();
+            this.btnIsoscelesTriangle = new System.Windows.Forms.Button();
+            this.btnRightTriangle = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.penSize)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -119,69 +117,16 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             // 
-            // toolStrip
-            // 
-            resources.ApplyResources(this.toolStrip, "toolStrip");
-            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnLine,
-            this.btnEllipse,
-            this.btnCircle,
-            this.btnRectangle,
-            this.btnSquare,
-            this.btnIsoscelesTriangle,
-            this.btnRightTriangle});
-            this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip.Name = "toolStrip";
-            // 
-            // btnLine
-            // 
-            this.btnLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnLine, "btnLine");
-            this.btnLine.Name = "btnLine";
-            // 
-            // btnEllipse
-            // 
-            this.btnEllipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnEllipse, "btnEllipse");
-            this.btnEllipse.Name = "btnEllipse";
-            // 
-            // btnCircle
-            // 
-            this.btnCircle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnCircle, "btnCircle");
-            this.btnCircle.Name = "btnCircle";
-            // 
-            // btnRectangle
-            // 
-            this.btnRectangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnRectangle, "btnRectangle");
-            this.btnRectangle.Name = "btnRectangle";
-            // 
-            // btnSquare
-            // 
-            this.btnSquare.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnSquare, "btnSquare");
-            this.btnSquare.Name = "btnSquare";
-            // 
-            // btnIsoscelesTriangle
-            // 
-            this.btnIsoscelesTriangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnIsoscelesTriangle, "btnIsoscelesTriangle");
-            this.btnIsoscelesTriangle.Name = "btnIsoscelesTriangle";
-            // 
-            // btnRightTriangle
-            // 
-            this.btnRightTriangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnRightTriangle, "btnRightTriangle");
-            this.btnRightTriangle.Name = "btnRightTriangle";
-            // 
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pictureBox, "pictureBox");
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
+            this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
             // 
             // btnColor
             // 
@@ -240,11 +185,60 @@
             this.btnDemo.Name = "btnDemo";
             this.btnDemo.UseVisualStyleBackColor = true;
             // 
+            // btnLine
+            // 
+            resources.ApplyResources(this.btnLine, "btnLine");
+            this.btnLine.Name = "btnLine";
+            this.btnLine.UseVisualStyleBackColor = true;
+            // 
+            // btnEllipse
+            // 
+            resources.ApplyResources(this.btnEllipse, "btnEllipse");
+            this.btnEllipse.Name = "btnEllipse";
+            this.btnEllipse.UseVisualStyleBackColor = true;
+            // 
+            // btnCircle
+            // 
+            resources.ApplyResources(this.btnCircle, "btnCircle");
+            this.btnCircle.Name = "btnCircle";
+            this.btnCircle.UseVisualStyleBackColor = true;
+            // 
+            // btnRectangle
+            // 
+            resources.ApplyResources(this.btnRectangle, "btnRectangle");
+            this.btnRectangle.Name = "btnRectangle";
+            this.btnRectangle.UseVisualStyleBackColor = true;
+            // 
+            // btnSquare
+            // 
+            resources.ApplyResources(this.btnSquare, "btnSquare");
+            this.btnSquare.Name = "btnSquare";
+            this.btnSquare.UseVisualStyleBackColor = true;
+            // 
+            // btnIsoscelesTriangle
+            // 
+            resources.ApplyResources(this.btnIsoscelesTriangle, "btnIsoscelesTriangle");
+            this.btnIsoscelesTriangle.Name = "btnIsoscelesTriangle";
+            this.btnIsoscelesTriangle.UseVisualStyleBackColor = true;
+            // 
+            // btnRightTriangle
+            // 
+            resources.ApplyResources(this.btnRightTriangle, "btnRightTriangle");
+            this.btnRightTriangle.Name = "btnRightTriangle";
+            this.btnRightTriangle.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.Controls.Add(this.btnRightTriangle);
+            this.Controls.Add(this.btnIsoscelesTriangle);
+            this.Controls.Add(this.btnSquare);
+            this.Controls.Add(this.btnRectangle);
+            this.Controls.Add(this.btnCircle);
+            this.Controls.Add(this.btnEllipse);
+            this.Controls.Add(this.btnLine);
             this.Controls.Add(this.btnDemo);
             this.Controls.Add(this.penSize);
             this.Controls.Add(this.label3);
@@ -253,16 +247,14 @@
             this.Controls.Add(this.btnFillColor);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.penSize)).EndInit();
             this.ResumeLayout(false);
@@ -281,14 +273,6 @@
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnLine;
-        private System.Windows.Forms.ToolStripButton btnEllipse;
-        private System.Windows.Forms.ToolStripButton btnCircle;
-        private System.Windows.Forms.ToolStripButton btnRectangle;
-        private System.Windows.Forms.ToolStripButton btnSquare;
-        private System.Windows.Forms.ToolStripButton btnIsoscelesTriangle;
-        private System.Windows.Forms.ToolStripButton btnRightTriangle;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.Button btnFillColor;
@@ -298,6 +282,13 @@
         private System.Windows.Forms.NumericUpDown penSize;
         private System.Windows.Forms.Button btnDemo;
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Button btnLine;
+        private System.Windows.Forms.Button btnEllipse;
+        private System.Windows.Forms.Button btnCircle;
+        private System.Windows.Forms.Button btnRectangle;
+        private System.Windows.Forms.Button btnSquare;
+        private System.Windows.Forms.Button btnIsoscelesTriangle;
+        private System.Windows.Forms.Button btnRightTriangle;
     }
 }
 

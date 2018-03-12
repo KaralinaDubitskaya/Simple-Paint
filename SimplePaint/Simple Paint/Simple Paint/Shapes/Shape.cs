@@ -17,5 +17,6 @@ namespace Simple_Paint
         }
 
         public abstract void Draw(Graphics graphics);
+        public abstract void Draw(Graphics graphics, Point startPoint, Point endPoint);
     }
 }

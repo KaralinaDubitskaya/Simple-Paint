@@ -10,30 +10,45 @@ namespace Simple_Paint
     public class Rectangle : Shape
     {
         // Coordinates of the upper-left corner.
-        protected int x1;
-        protected int y1;
+        protected Point leftCorner;
 
         // Coordinates of the lower-right corner.
-        protected int x2;
-        protected int y2;
+        protected Point rightCorner;
 
         protected Brush brush;
 
-        public Rectangle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(color, penWidth)
+        public Rectangle(Point start, Point end, Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
-            this.x1 = Math.Min(x1, x2);
-            this.y1 = Math.Min(y1, y2);
+            leftCorner.X = Math.Min(start.X, end.X);
+            leftCorner.Y = Math.Min(start.Y, end.Y);
 
-            this.x2 = Math.Max(x1, x2);
-            this.y2 = Math.Max(y1, y2);
-            
+            rightCorner.X = Math.Max(start.X, end.X);
+            rightCorner.Y = Math.Max(start.Y, end.Y);
+
             brush = new SolidBrush(fillColor);
+        }
+
+        public Rectangle(Color color, Color fillColor, float penWidth) : base(color, penWidth)
+        {
+            brush = new SolidBrush(fillColor);
+        }
+
+        public override void Draw(Graphics graphics, Point start, Point end)
+        {
+            leftCorner.X = Math.Min(start.X, end.X);
+            leftCorner.Y = Math.Min(start.Y, end.Y);
+
+            rightCorner.X = Math.Max(start.X, end.X);
+            rightCorner.Y = Math.Max(start.Y, end.Y);
+
+            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(brush, x1, y1, x2 - x1, y2 - y1);
-            graphics.DrawRectangle(pen, x1, y1, x2 - x1, y2 - y1);
+            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
         }
     }
 }

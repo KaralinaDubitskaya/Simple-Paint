@@ -15,14 +15,23 @@ namespace Simple_Paint
         private Graphics graphics;
         private ListOfShapes listOfShapes;
 
+        private Shape shape;
+
         private Color color;
         private Color fillColor;
 
         private float penWidth;
 
+        private int x1, y1;   // coordinates of the starting point
+        private int x2, y2;   // coordinates of the endpoint
+        private bool isDrawn; // true, when the user is drawing a shape
+
         public MainWindow()
         {
             InitializeComponent();
+
+            btnColor.BackColor = Color.Black;
+            btnFillColor.BackColor = Color.White;
 
             graphics = CreateGraphics(pictureBox.Width, pictureBox.Height);
             listOfShapes = new ListOfShapes();
@@ -31,9 +40,7 @@ namespace Simple_Paint
             fillColor = Color.White;
             penWidth = 1;
 
-            CreateShapes();
-
-            listOfShapes.Draw(graphics);
+            isDrawn = false;
         }
 
         private Graphics CreateGraphics(int width, int height)
@@ -45,26 +52,7 @@ namespace Simple_Paint
 
         private void CreateShapes()
         {
-            Line line = new Line(50, 50, 400, 200, Color.Chocolate, 8);
-            listOfShapes.Add(line);
-
-            Ellipse ellipse = new Ellipse(535, 410, 1100, 20, Color.Purple, Color.Red, 2);
-            listOfShapes.Add(ellipse);
-
-            Rectangle rectangle = new Rectangle(432, 572, 60, 24, Color.BlueViolet, Color.IndianRed, 5);
-            listOfShapes.Add(rectangle);
-
-            IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle(400, 100, 200, 300, Color.BlueViolet, Color.IndianRed, 1);
-            listOfShapes.Add(isoscelesTriangle);
-
-            RightTriangle rightTriangle = new RightTriangle(30, 500, 200, 300, Color.Blue, Color.Blue, 1);
-            listOfShapes.Add(rightTriangle);
-
-            Square square = new Square(300, 300, 100, 40, Color.Black, Color.Blue, 2);
-            listOfShapes.Add(square);
-
-            Circle circle = new Circle(500, 600, 130, 440, Color.Black, Color.Blue, 2);
-            listOfShapes.Add(circle);
+           
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -88,6 +76,40 @@ namespace Simple_Paint
         private void penSize_ValueChanged(object sender, EventArgs e)
         {
             penWidth = (float)penSize.Value;
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            // user starts drawing
+            isDrawn = true;
+
+            // coordinates of the starting point
+            x1 = e.X;
+            y1 = e.Y;
+
+            // end point is equal to starting point
+            x2 = e.X;
+            y2 = e.Y;
+        }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDrawn)
+            {
+                x2 = e.X;
+                y2 = e.Y;
+
+                // redraw pictureBox
+                pictureBox.Invalidate();
+            }
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            x2 = e.X;
+            y2 = e.Y;
+
+            isDrawn = false;
         }
     }
 }
