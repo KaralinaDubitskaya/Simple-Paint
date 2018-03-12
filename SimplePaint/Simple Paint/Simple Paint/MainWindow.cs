@@ -15,6 +15,11 @@ namespace Simple_Paint
         private Graphics graphics;
         private ListOfShapes listOfShapes;
 
+        private Color color;
+        private Color fillColor;
+
+        private float penWidth;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,7 +27,13 @@ namespace Simple_Paint
             graphics = CreateGraphics(pictureBox.Width, pictureBox.Height);
             listOfShapes = new ListOfShapes();
 
-            DrawShapes();
+            color = Color.Black;
+            fillColor = Color.White;
+            penWidth = 1;
+
+            CreateShapes();
+
+            listOfShapes.Draw(graphics);
         }
 
         private Graphics CreateGraphics(int width, int height)
@@ -32,7 +43,7 @@ namespace Simple_Paint
             return Graphics.FromImage(bitmap);
         }
 
-        private void DrawShapes()
+        private void CreateShapes()
         {
             Line line = new Line(50, 50, 400, 200, Color.Chocolate, 8);
             listOfShapes.Add(line);
@@ -54,8 +65,29 @@ namespace Simple_Paint
 
             Circle circle = new Circle(500, 600, 130, 440, Color.Black, Color.Blue, 2);
             listOfShapes.Add(circle);
-            
-            listOfShapes.Draw(graphics);
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                btnColor.BackColor = colorDialog.Color;
+                color = colorDialog.Color;
+            }
+        }
+
+        private void btnFillColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                btnFillColor.BackColor = colorDialog.Color;
+                fillColor = colorDialog.Color;
+            }
+        }
+
+        private void penSize_ValueChanged(object sender, EventArgs e)
+        {
+            penWidth = (float)penSize.Value;
         }
     }
 }
