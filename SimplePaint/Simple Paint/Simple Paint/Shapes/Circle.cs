@@ -9,6 +9,7 @@ namespace Simple_Paint
 {
     public class Circle : Ellipse
     {
+        // TODO coordinates calc
         private float diameter;
 
         public Circle(Color color, Color fillColor, float penWidth) : base(color, fillColor, penWidth) { }
@@ -31,6 +32,8 @@ namespace Simple_Paint
 
             rightPoint.X = Math.Max(start.X, end.X);
             rightPoint.Y = Math.Max(start.Y, end.Y);
+
+            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
 
             graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);
             graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, diameter, diameter);

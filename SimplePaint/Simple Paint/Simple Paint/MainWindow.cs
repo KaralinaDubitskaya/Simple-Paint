@@ -22,8 +22,8 @@ namespace Simple_Paint
 
         private float penWidth;
 
-        private int x1, y1;   // coordinates of the starting point
-        private int x2, y2;   // coordinates of the endpoint
+        private Point startPoint;   // coordinates of the starting point
+        private Point endPoint;   // coordinates of the endpoint
         private bool isDrawn; // true, when the user is drawing a shape
 
         public MainWindow()
@@ -41,6 +41,7 @@ namespace Simple_Paint
             penWidth = 1;
 
             isDrawn = false;
+            
         }
 
         private Graphics CreateGraphics(int width, int height)
@@ -48,11 +49,6 @@ namespace Simple_Paint
             Bitmap bitmap = new Bitmap(width, height);
             pictureBox.Image = bitmap;
             return Graphics.FromImage(bitmap);
-        }
-
-        private void CreateShapes()
-        {
-           
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -84,20 +80,20 @@ namespace Simple_Paint
             isDrawn = true;
 
             // coordinates of the starting point
-            x1 = e.X;
-            y1 = e.Y;
+            startPoint.X = e.X;
+            startPoint.Y = e.Y;
 
             // end point is equal to starting point
-            x2 = e.X;
-            y2 = e.Y;
+            endPoint.X = e.X;
+            endPoint.Y = e.Y;
         }
-
+        
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDrawn)
             {
-                x2 = e.X;
-                y2 = e.Y;
+                endPoint.X = e.X;
+                endPoint.Y = e.Y;
 
                 // redraw pictureBox
                 pictureBox.Invalidate();
@@ -106,10 +102,59 @@ namespace Simple_Paint
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            x2 = e.X;
-            y2 = e.Y;
+            endPoint.X = e.X;
+            endPoint.Y = e.Y;
 
             isDrawn = false;
         }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            shape = new Line(color, penWidth);
+        }
+
+        private void btnEllipse_Click(object sender, EventArgs e)
+        {
+            shape = new Ellipse(color, fillColor, penWidth);
+        }
+
+        private void btnCircle_Click(object sender, EventArgs e)
+        {
+            shape = new Circle(color, fillColor, penWidth);
+        }
+
+        private void btnRectangle_Click(object sender, EventArgs e)
+        {
+            shape = new Rectangle(color, fillColor, penWidth);
+        }
+
+        private void btnSquare_Click(object sender, EventArgs e)
+        {
+            shape = new Square(color, fillColor, penWidth);
+        }
+
+        private void btnIsoscelesTriangle_Click(object sender, EventArgs e)
+        {
+            shape = new IsoscelesTriangle(color, fillColor, penWidth);
+        }
+
+        private void btnRightTriangle_Click(object sender, EventArgs e)
+        {
+            shape = new RightTriangle(color, fillColor, penWidth);
+        }
+
+        // occurs when the control is redrawn
+        private void pictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (shape != null)
+            {
+                shape.Draw(e.Graphics, startPoint, endPoint);
+            }
+        }
+        // TODO save & open
+        // TODO undo & redo
+        // TODO cat
+        // TODO save figure
+        // TODO change penWidth
     }
 }

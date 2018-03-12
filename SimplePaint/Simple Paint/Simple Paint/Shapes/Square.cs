@@ -9,6 +9,7 @@ namespace Simple_Paint
 {
     public class Square : Rectangle
     {
+        // TODO coordinates calc
         private float width;
 
         public Square(Color color, Color fillColor, float penWidth) : base(color, fillColor, penWidth) { }
@@ -31,6 +32,8 @@ namespace Simple_Paint
 
             rightCorner.X = Math.Max(start.X, end.X);
             rightCorner.Y = Math.Max(start.Y, end.Y);
+
+            width = Math.Max(rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
 
             graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, width, width);
             graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, width, width);

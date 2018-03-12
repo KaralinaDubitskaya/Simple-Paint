@@ -124,6 +124,7 @@
             resources.ApplyResources(this.pictureBox, "pictureBox");
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.TabStop = false;
+            this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
@@ -190,42 +191,49 @@
             resources.ApplyResources(this.btnLine, "btnLine");
             this.btnLine.Name = "btnLine";
             this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnEllipse
             // 
             resources.ApplyResources(this.btnEllipse, "btnEllipse");
             this.btnEllipse.Name = "btnEllipse";
             this.btnEllipse.UseVisualStyleBackColor = true;
+            this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
             // 
             // btnCircle
             // 
             resources.ApplyResources(this.btnCircle, "btnCircle");
             this.btnCircle.Name = "btnCircle";
             this.btnCircle.UseVisualStyleBackColor = true;
+            this.btnCircle.Click += new System.EventHandler(this.btnCircle_Click);
             // 
             // btnRectangle
             // 
             resources.ApplyResources(this.btnRectangle, "btnRectangle");
             this.btnRectangle.Name = "btnRectangle";
             this.btnRectangle.UseVisualStyleBackColor = true;
+            this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
             // 
             // btnSquare
             // 
             resources.ApplyResources(this.btnSquare, "btnSquare");
             this.btnSquare.Name = "btnSquare";
             this.btnSquare.UseVisualStyleBackColor = true;
+            this.btnSquare.Click += new System.EventHandler(this.btnSquare_Click);
             // 
             // btnIsoscelesTriangle
             // 
             resources.ApplyResources(this.btnIsoscelesTriangle, "btnIsoscelesTriangle");
             this.btnIsoscelesTriangle.Name = "btnIsoscelesTriangle";
             this.btnIsoscelesTriangle.UseVisualStyleBackColor = true;
+            this.btnIsoscelesTriangle.Click += new System.EventHandler(this.btnIsoscelesTriangle_Click);
             // 
             // btnRightTriangle
             // 
             resources.ApplyResources(this.btnRightTriangle, "btnRightTriangle");
             this.btnRightTriangle.Name = "btnRightTriangle";
             this.btnRightTriangle.UseVisualStyleBackColor = true;
+            this.btnRightTriangle.Click += new System.EventHandler(this.btnRightTriangle_Click);
             // 
             // MainWindow
             // 
