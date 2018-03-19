@@ -34,12 +34,12 @@ namespace Simple_Paint
             start = startPoint;
             end = endPoint;
 
-            graphics.DrawLine(pen, start.X, start.Y, end.X, end.Y);
+            graphics.DrawLine(Pen, start.X, start.Y, end.X, end.Y);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.DrawLine(pen, start.X, start.Y, end.X, end.Y);
+            graphics.DrawLine(Pen, start.X, start.Y, end.X, end.Y);
         }
     }
 }

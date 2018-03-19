@@ -15,11 +15,11 @@ namespace Simple_Paint
         // Coordinates of the lower-right corner of the bounding rectangle that defines the ellipse.
         protected Point rightPoint;
 
-        protected Brush brush;
+        public Brush Brush { get; set; }
 
         public Ellipse(Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public Ellipse(Point start, Point end, Color color, Color fillColor, float penWidth) : base(color, penWidth)
@@ -30,7 +30,7 @@ namespace Simple_Paint
             rightPoint.X = Math.Max(start.X, end.X);
             rightPoint.Y = Math.Max(start.Y, end.Y);
             
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public Ellipse(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(color, penWidth)
@@ -41,7 +41,7 @@ namespace Simple_Paint
             rightPoint.X = Math.Max(x1, x2);
             rightPoint.Y = Math.Max(y1, y2);
 
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public override void Draw(Graphics graphics, Point start, Point end)
@@ -52,14 +52,14 @@ namespace Simple_Paint
             rightPoint.X = Math.Max(start.X, end.X);
             rightPoint.Y = Math.Max(start.Y, end.Y);
 
-            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
-            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
+            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
+            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
-            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
+            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
+            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
         }
     }
 }

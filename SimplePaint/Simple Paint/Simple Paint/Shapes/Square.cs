@@ -26,8 +26,8 @@ namespace Simple_Paint
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, width, width);
-            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, width, width);
+            graphics.FillRectangle(Brush, leftCorner.X, leftCorner.Y, width, width);
+            graphics.DrawRectangle(Pen, leftCorner.X, leftCorner.Y, width, width);
         }
 
         public override void Draw(Graphics graphics, Point start, Point end)
@@ -40,8 +40,8 @@ namespace Simple_Paint
 
             width = Math.Max(rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
 
-            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, width, width);
-            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, width, width);
+            graphics.FillRectangle(Brush, leftCorner.X, leftCorner.Y, width, width);
+            graphics.DrawRectangle(Pen, leftCorner.X, leftCorner.Y, width, width);
         }
     }
 }

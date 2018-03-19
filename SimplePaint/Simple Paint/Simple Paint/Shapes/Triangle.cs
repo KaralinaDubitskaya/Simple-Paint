@@ -10,17 +10,17 @@ namespace Simple_Paint
     public abstract class Triangle : Shape
     {
         protected Point[] vertices;
-        protected Brush brush;
+        public Brush Brush { get; set; }
 
         public Triangle(Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillPolygon(brush, vertices);
-            graphics.DrawPolygon(pen, vertices);
+            graphics.FillPolygon(Brush, vertices);
+            graphics.DrawPolygon(Pen, vertices);
         }
     }
 }

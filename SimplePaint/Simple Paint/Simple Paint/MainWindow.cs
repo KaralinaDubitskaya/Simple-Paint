@@ -12,9 +12,8 @@ namespace Simple_Paint
 {
     public partial class MainWindow : Form
     {
-        private Graphics graphics;
         private ListOfShapes listOfShapes;
-
+        private Graphics graphics;
         private Shape shape;
 
         private Color color;
@@ -32,8 +31,7 @@ namespace Simple_Paint
 
             btnColor.BackColor = Color.Black;
             btnFillColor.BackColor = Color.White;
-
-           // graphics = CreateGraphics(pictureBox.Width, pictureBox.Height);
+            
             listOfShapes = new ListOfShapes();
 
             color = Color.Black;
@@ -41,14 +39,10 @@ namespace Simple_Paint
             penWidth = 1;
 
             isDrawn = false;
-            
-        }
 
-        private Graphics CreateGraphics(int width, int height)
-        {
-            Bitmap bitmap = new Bitmap(width, height);
+            Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             pictureBox.Image = bitmap;
-            return Graphics.FromImage(bitmap);
+            graphics = Graphics.FromImage(pictureBox.Image);
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -57,6 +51,8 @@ namespace Simple_Paint
             {
                 btnColor.BackColor = colorDialog.Color;
                 color = colorDialog.Color;
+
+                shape.Pen = new Pen(color, penWidth);
             }
         }
 
@@ -66,12 +62,19 @@ namespace Simple_Paint
             {
                 btnFillColor.BackColor = colorDialog.Color;
                 fillColor = colorDialog.Color;
+                
+                if (!(shape is Line))
+                {
+                    object[] args = new object[3] { color, fillColor, penWidth };
+                    shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
+                }
             }
         }
 
         private void penSize_ValueChanged(object sender, EventArgs e)
         {
             penWidth = (float)penSize.Value;
+            shape.Pen = new Pen(color, penWidth);
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -102,25 +105,27 @@ namespace Simple_Paint
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            endPoint.X = e.X;
-            endPoint.Y = e.Y;
-
-            isDrawn = false;
-
-            listOfShapes.Add(shape);
-            object[] args;
-            if (shape is Line)
+            if (shape != null)
             {
-                args = new object[2] { color, penWidth };
-            }
-            else
-            {
-                args = new object[3] { color, fillColor, penWidth };
-            }
-            shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
+                endPoint.X = e.X;
+                endPoint.Y = e.Y;
 
-            //listOfShapes.Draw(graphics);
-            //graphics = Graphics.FromImage(pictureBox.Image);
+                isDrawn = false;
+
+                listOfShapes.Add(shape);
+
+                // create new instance of shape
+                object[] args;
+                if (shape is Line)
+                {
+                    args = new object[2] { color, penWidth };
+                }
+                else
+                {
+                    args = new object[3] { color, fillColor, penWidth };
+                }
+                shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
+            }
         }
 
         private void btnLine_Click(object sender, EventArgs e)
@@ -161,11 +166,131 @@ namespace Simple_Paint
         // occurs when the control is redrawn
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            if (shape != null)
+            listOfShapes.Draw(e.Graphics);
+            if ((shape != null) && isDrawn)
             {
-                listOfShapes.Draw(e.Graphics);
                 shape.Draw(e.Graphics, startPoint, endPoint);
             }
+        }
+
+        // draw demo-picture 
+        private void btnDemo_Click(object sender, EventArgs e)
+        {
+            // grass
+            Shape sh = new Rectangle(0, 0, pictureBox.Width, pictureBox.Height, Color.LightGreen, Color.LightGreen, 1);
+            listOfShapes.Add(sh);
+
+            // sky
+            sh = new Rectangle(0, 0, pictureBox.Width, pictureBox.Height / 2, Color.SkyBlue, Color.SkyBlue, 1);
+            listOfShapes.Add(sh);
+
+            // left cloud
+            sh = new Ellipse(87, 78, 188, 111, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(148, 89, 225, 126, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(134, 72, 197, 104, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(107, 94, 179, 133, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(155, 89, 212, 118, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(107, 89, 163, 116, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+
+            // right cloud
+            sh = new Ellipse(587, 98, 688, 131, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(648, 109, 725, 146, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(634, 92, 697, 124, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(607, 114, 679, 153, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(655, 109, 712, 138, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+            sh = new Ellipse(607, 109, 663, 136, Color.WhiteSmoke, Color.White, 1);
+            listOfShapes.Add(sh);
+
+            // house
+            sh = new Square(250, 227, 463, 462, Color.Black, Color.Tan, 2);
+            listOfShapes.Add(sh);
+
+            // left window
+            sh = new Square(284, 308, 336, 336, Color.Sienna, Color.LightCyan, 3);
+            listOfShapes.Add(sh);
+
+            sh = new Line(335, 336, 285, 336, Color.Navy, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Line(311, 359, 311, 309, Color.Navy, 1);
+            listOfShapes.Add(sh);
+
+            // right window
+            sh = new Square(384, 308, 436, 336, Color.Sienna, Color.LightCyan, 3);
+            listOfShapes.Add(sh);
+
+            sh = new Line(435, 336, 385, 336, Color.Navy, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Line(411, 359, 411, 309, Color.Navy, 1);
+            listOfShapes.Add(sh);
+
+            // roof
+            sh = new IsoscelesTriangle(212, 225, 363, 144, Color.Black, Color.SaddleBrown, 2);
+            listOfShapes.Add(sh);
+
+            sh = new Rectangle(195, 220, 533, 238, Color.Black, Color.SaddleBrown, 2);
+            listOfShapes.Add(sh);
+
+            // door
+            sh = new Rectangle(341, 391, 396, 462, Color.Black, Color.SaddleBrown, 2);
+            listOfShapes.Add(sh);
+
+            sh = new Line(388, 432, 376, 432, Color.Black, 1);
+            listOfShapes.Add(sh);
+
+            // circle window
+            sh = new Circle(347, 178, 377, 191, Color.Black, Color.BurlyWood, 2);
+            listOfShapes.Add(sh);
+
+            sh = new Circle(356, 186, 358, 199, Color.Black, Color.AliceBlue, 2);
+            listOfShapes.Add(sh);
+
+            // chimney
+            sh = new Rectangle(430, 156, 454, 201, Color.Black, Color.BurlyWood, 2);
+            listOfShapes.Add(sh);
+
+            sh = new Rectangle(418, 142, 467, 163, Color.Black, Color.BurlyWood, 2);
+            listOfShapes.Add(sh);
+
+            // tree
+            sh = new Rectangle(831, 265, 852, 469, Color.BurlyWood, Color.BurlyWood, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Line(938, 265, 848, 360, Color.BurlyWood, 6);
+            listOfShapes.Add(sh);
+
+            sh = new Line(779, 265, 840, 375, Color.BurlyWood, 6);
+            listOfShapes.Add(sh);
+
+            sh = new Ellipse(754, 168, 924, 278, Color.DarkGreen, Color.ForestGreen, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Ellipse(924, 279, 924, 284, Color.DarkGreen, Color.ForestGreen, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Ellipse(884, 225, 997, 342, Color.DarkGreen, Color.ForestGreen, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Ellipse(730, 230, 854, 353, Color.DarkGreen, Color.ForestGreen, 1);
+            listOfShapes.Add(sh);
+
+            sh = new Ellipse(840, 228, 937, 333, Color.DarkGreen, Color.ForestGreen, 1);
+            listOfShapes.Add(sh);
+
+            // redraw pictureBox
+            pictureBox.Refresh();
         }
         // TODO save & open
         // TODO undo & redo

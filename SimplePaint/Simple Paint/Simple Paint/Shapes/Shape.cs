@@ -9,11 +9,11 @@ namespace Simple_Paint
 {
     public abstract class Shape
     {
-        protected Pen pen;
+        public Pen Pen { get; set; }
 
         public Shape(Color color, float penWidth)
         {
-            pen = new Pen(color, penWidth);
+            Pen = new Pen(color, penWidth);
         }
 
         public abstract void Draw(Graphics graphics);

@@ -54,6 +54,8 @@
             this.btnSquare = new System.Windows.Forms.Button();
             this.btnIsoscelesTriangle = new System.Windows.Forms.Button();
             this.btnRightTriangle = new System.Windows.Forms.Button();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.penSize)).BeginInit();
@@ -98,7 +100,9 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem});
+            this.redoToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.clearToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             // 
@@ -191,6 +195,7 @@
             resources.ApplyResources(this.btnDemo, "btnDemo");
             this.btnDemo.Name = "btnDemo";
             this.btnDemo.UseVisualStyleBackColor = false;
+            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
             // 
             // btnLine
             // 
@@ -255,6 +260,16 @@
             this.btnRightTriangle.UseVisualStyleBackColor = false;
             this.btnRightTriangle.Click += new System.EventHandler(this.btnRightTriangle_Click);
             // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            resources.ApplyResources(this.clearToolStripMenuItem, "clearToolStripMenuItem");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -317,6 +332,8 @@
         private System.Windows.Forms.Button btnSquare;
         private System.Windows.Forms.Button btnIsoscelesTriangle;
         private System.Windows.Forms.Button btnRightTriangle;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }
 

@@ -37,8 +37,8 @@ namespace Simple_Paint
 
             vertices = new Point[3] { vertex1, vertex2, vertex3 };
 
-            graphics.FillPolygon(brush, vertices);
-            graphics.DrawPolygon(pen, vertices);
+            graphics.FillPolygon(Brush, vertices);
+            graphics.DrawPolygon(Pen, vertices);
         }
     }
 }

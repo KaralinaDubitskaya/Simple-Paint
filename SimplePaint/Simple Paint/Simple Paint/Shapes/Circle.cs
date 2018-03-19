@@ -26,8 +26,8 @@ namespace Simple_Paint
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);
-            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, diameter, diameter);
         }
 
         public override void Draw(Graphics graphics, Point start, Point end)
@@ -40,8 +40,8 @@ namespace Simple_Paint
 
             diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
 
-            graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);
-            graphics.DrawEllipse(pen, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, diameter, diameter);
         }
     }
 }

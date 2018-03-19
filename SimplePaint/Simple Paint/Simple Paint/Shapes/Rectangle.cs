@@ -15,9 +15,9 @@ namespace Simple_Paint
         // Coordinates of the lower-right corner.
         protected Point rightCorner;
 
-        protected Brush brush;
+        public Brush Brush { get; set; }
 
-        public Rectangle(Point start, Point end, Color color, Color fillColor, float penWidth) : base(color, penWidth)
+    public Rectangle(Point start, Point end, Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
             leftCorner.X = Math.Min(start.X, end.X);
             leftCorner.Y = Math.Min(start.Y, end.Y);
@@ -25,12 +25,12 @@ namespace Simple_Paint
             rightCorner.X = Math.Max(start.X, end.X);
             rightCorner.Y = Math.Max(start.Y, end.Y);
 
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public Rectangle(Color color, Color fillColor, float penWidth) : base(color, penWidth)
         {
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public Rectangle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(color, penWidth)
@@ -41,7 +41,7 @@ namespace Simple_Paint
             rightCorner.X = Math.Max(x1, x2);
             rightCorner.Y = Math.Max(y1, y2);
 
-            brush = new SolidBrush(fillColor);
+            Brush = new SolidBrush(fillColor);
         }
 
         public override void Draw(Graphics graphics, Point start, Point end)
@@ -52,14 +52,14 @@ namespace Simple_Paint
             rightCorner.X = Math.Max(start.X, end.X);
             rightCorner.Y = Math.Max(start.Y, end.Y);
 
-            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
-            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.FillRectangle(Brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.DrawRectangle(Pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
-            graphics.DrawRectangle(pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.FillRectangle(Brush, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+            graphics.DrawRectangle(Pen, leftCorner.X, leftCorner.Y, rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
         }
     }
 }
