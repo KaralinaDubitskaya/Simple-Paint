@@ -19,6 +19,11 @@ namespace Simple_Paint
             diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
         }
 
+        public Circle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(x1, y1, x2, y2, color, fillColor, penWidth)
+        {
+            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
+        }
+
         public override void Draw(Graphics graphics)
         {
             graphics.FillEllipse(brush, leftPoint.X, leftPoint.Y, diameter, diameter);

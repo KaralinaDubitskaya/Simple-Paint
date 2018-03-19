@@ -396,9 +396,6 @@
   <data name="btnLine.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="btnLine.Text" xml:space="preserve">
-    <value>v</value>
-  </data>
   <data name="&gt;&gt;btnLine.Name" xml:space="preserve">
     <value>btnLine</value>
   </data>
@@ -422,9 +419,6 @@
   </data>
   <data name="btnEllipse.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
-  </data>
-  <data name="btnEllipse.Text" xml:space="preserve">
-    <value>v</value>
   </data>
   <data name="&gt;&gt;btnEllipse.Name" xml:space="preserve">
     <value>btnEllipse</value>
@@ -450,9 +444,6 @@
   <data name="btnCircle.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
-  <data name="btnCircle.Text" xml:space="preserve">
-    <value>v</value>
-  </data>
   <data name="&gt;&gt;btnCircle.Name" xml:space="preserve">
     <value>btnCircle</value>
   </data>
@@ -476,9 +467,6 @@
   </data>
   <data name="btnRectangle.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
-  </data>
-  <data name="btnRectangle.Text" xml:space="preserve">
-    <value>v</value>
   </data>
   <data name="&gt;&gt;btnRectangle.Name" xml:space="preserve">
     <value>btnRectangle</value>
@@ -504,9 +492,6 @@
   <data name="btnSquare.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="btnSquare.Text" xml:space="preserve">
-    <value>v</value>
-  </data>
   <data name="&gt;&gt;btnSquare.Name" xml:space="preserve">
     <value>btnSquare</value>
   </data>
@@ -531,9 +516,6 @@
   <data name="btnIsoscelesTriangle.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="btnIsoscelesTriangle.Text" xml:space="preserve">
-    <value>v</value>
-  </data>
   <data name="&gt;&gt;btnIsoscelesTriangle.Name" xml:space="preserve">
     <value>btnIsoscelesTriangle</value>
   </data>
@@ -557,9 +539,6 @@
   </data>
   <data name="btnRightTriangle.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
-  </data>
-  <data name="btnRightTriangle.Text" xml:space="preserve">
-    <value>v</value>
   </data>
   <data name="&gt;&gt;btnRightTriangle.Name" xml:space="preserve">
     <value>btnRightTriangle</value>

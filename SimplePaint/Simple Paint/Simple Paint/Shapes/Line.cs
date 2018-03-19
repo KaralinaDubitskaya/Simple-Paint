@@ -20,6 +20,15 @@ namespace Simple_Paint
             end = endPoint;
         }
 
+        public Line(int x1, int y1, int x2, int y2, Color color, float penWidth) : base(color, penWidth)
+        {
+            start.X = x1;
+            start.Y = y1;
+
+            end.X = x2;
+            end.Y = y2;
+        }
+
         public override void Draw(Graphics graphics, Point startPoint, Point endPoint)
         {
             start = startPoint;

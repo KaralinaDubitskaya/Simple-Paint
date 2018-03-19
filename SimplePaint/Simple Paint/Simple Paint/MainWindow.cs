@@ -33,7 +33,7 @@ namespace Simple_Paint
             btnColor.BackColor = Color.Black;
             btnFillColor.BackColor = Color.White;
 
-            graphics = CreateGraphics(pictureBox.Width, pictureBox.Height);
+           // graphics = CreateGraphics(pictureBox.Width, pictureBox.Height);
             listOfShapes = new ListOfShapes();
 
             color = Color.Black;
@@ -96,7 +96,7 @@ namespace Simple_Paint
                 endPoint.Y = e.Y;
 
                 // redraw pictureBox
-                pictureBox.Invalidate();
+                pictureBox.Refresh();
             }
         }
 
@@ -106,6 +106,21 @@ namespace Simple_Paint
             endPoint.Y = e.Y;
 
             isDrawn = false;
+
+            listOfShapes.Add(shape);
+            object[] args;
+            if (shape is Line)
+            {
+                args = new object[2] { color, penWidth };
+            }
+            else
+            {
+                args = new object[3] { color, fillColor, penWidth };
+            }
+            shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
+
+            //listOfShapes.Draw(graphics);
+            //graphics = Graphics.FromImage(pictureBox.Image);
         }
 
         private void btnLine_Click(object sender, EventArgs e)
@@ -148,6 +163,7 @@ namespace Simple_Paint
         {
             if (shape != null)
             {
+                listOfShapes.Draw(e.Graphics);
                 shape.Draw(e.Graphics, startPoint, endPoint);
             }
         }

@@ -33,6 +33,17 @@ namespace Simple_Paint
             brush = new SolidBrush(fillColor);
         }
 
+        public Rectangle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(color, penWidth)
+        {
+            leftCorner.X = Math.Min(x1, x2);
+            leftCorner.Y = Math.Min(y1, y2);
+
+            rightCorner.X = Math.Max(x1, x2);
+            rightCorner.Y = Math.Max(y1, y2);
+
+            brush = new SolidBrush(fillColor);
+        }
+
         public override void Draw(Graphics graphics, Point start, Point end)
         {
             leftCorner.X = Math.Min(start.X, end.X);

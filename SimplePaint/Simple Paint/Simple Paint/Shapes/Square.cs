@@ -19,6 +19,11 @@ namespace Simple_Paint
             width = Math.Max(rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
         }
 
+        public Square(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(x1, y1, x2, y2, color, fillColor, penWidth)
+        {
+            width = Math.Max(rightCorner.X - leftCorner.X, rightCorner.Y - leftCorner.Y);
+        }
+
         public override void Draw(Graphics graphics)
         {
             graphics.FillRectangle(brush, leftCorner.X, leftCorner.Y, width, width);

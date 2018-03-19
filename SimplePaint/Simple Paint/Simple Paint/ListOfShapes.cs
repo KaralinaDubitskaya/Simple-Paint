@@ -11,6 +11,8 @@ namespace Simple_Paint
     {
         private List<Shape> listOfShapes;
 
+        public int Count { get { return listOfShapes.Count; } } 
+
         public ListOfShapes()
         {
             listOfShapes = new List<Shape>();
@@ -21,11 +23,24 @@ namespace Simple_Paint
             listOfShapes.Add(shape);
         }
 
+        public Shape GetLast()
+        {
+            if (Count != 0)
+            {
+                return listOfShapes[Count - 1];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void Draw(Graphics graphics)
         {
             foreach (Shape shape in listOfShapes)
             {
-                shape.Draw(graphics);
+                if (shape != null)
+                    shape.Draw(graphics);
             }
         }
     }

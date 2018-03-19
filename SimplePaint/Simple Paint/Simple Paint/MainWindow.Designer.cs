@@ -131,16 +131,20 @@
             // 
             // btnColor
             // 
+            this.btnColor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnColor.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnColor, "btnColor");
             this.btnColor.Name = "btnColor";
-            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.UseVisualStyleBackColor = false;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // btnFillColor
             // 
+            this.btnFillColor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFillColor.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnFillColor, "btnFillColor");
             this.btnFillColor.Name = "btnFillColor";
-            this.btnFillColor.UseVisualStyleBackColor = true;
+            this.btnFillColor.UseVisualStyleBackColor = false;
             this.btnFillColor.Click += new System.EventHandler(this.btnFillColor_Click);
             // 
             // lblColor
@@ -182,57 +186,73 @@
             // 
             // btnDemo
             // 
+            this.btnDemo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDemo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnDemo, "btnDemo");
             this.btnDemo.Name = "btnDemo";
-            this.btnDemo.UseVisualStyleBackColor = true;
+            this.btnDemo.UseVisualStyleBackColor = false;
             // 
             // btnLine
             // 
+            this.btnLine.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLine.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnLine, "btnLine");
             this.btnLine.Name = "btnLine";
-            this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.UseVisualStyleBackColor = false;
             this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnEllipse
             // 
+            this.btnEllipse.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEllipse.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnEllipse, "btnEllipse");
             this.btnEllipse.Name = "btnEllipse";
-            this.btnEllipse.UseVisualStyleBackColor = true;
+            this.btnEllipse.UseVisualStyleBackColor = false;
             this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
             // 
             // btnCircle
             // 
+            this.btnCircle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCircle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnCircle, "btnCircle");
             this.btnCircle.Name = "btnCircle";
-            this.btnCircle.UseVisualStyleBackColor = true;
+            this.btnCircle.UseVisualStyleBackColor = false;
             this.btnCircle.Click += new System.EventHandler(this.btnCircle_Click);
             // 
             // btnRectangle
             // 
+            this.btnRectangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRectangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnRectangle, "btnRectangle");
             this.btnRectangle.Name = "btnRectangle";
-            this.btnRectangle.UseVisualStyleBackColor = true;
+            this.btnRectangle.UseVisualStyleBackColor = false;
             this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
             // 
             // btnSquare
             // 
+            this.btnSquare.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSquare.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnSquare, "btnSquare");
             this.btnSquare.Name = "btnSquare";
-            this.btnSquare.UseVisualStyleBackColor = true;
+            this.btnSquare.UseVisualStyleBackColor = false;
             this.btnSquare.Click += new System.EventHandler(this.btnSquare_Click);
             // 
             // btnIsoscelesTriangle
             // 
+            this.btnIsoscelesTriangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnIsoscelesTriangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnIsoscelesTriangle, "btnIsoscelesTriangle");
             this.btnIsoscelesTriangle.Name = "btnIsoscelesTriangle";
-            this.btnIsoscelesTriangle.UseVisualStyleBackColor = true;
+            this.btnIsoscelesTriangle.UseVisualStyleBackColor = false;
             this.btnIsoscelesTriangle.Click += new System.EventHandler(this.btnIsoscelesTriangle_Click);
             // 
             // btnRightTriangle
             // 
+            this.btnRightTriangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRightTriangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
             resources.ApplyResources(this.btnRightTriangle, "btnRightTriangle");
             this.btnRightTriangle.Name = "btnRightTriangle";
-            this.btnRightTriangle.UseVisualStyleBackColor = true;
+            this.btnRightTriangle.UseVisualStyleBackColor = false;
             this.btnRightTriangle.Click += new System.EventHandler(this.btnRightTriangle_Click);
             // 
             // MainWindow
