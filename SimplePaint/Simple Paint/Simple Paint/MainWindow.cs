@@ -59,7 +59,10 @@ namespace Simple_Paint
                 btnColor.BackColor = colorDialog.Color;
                 color = colorDialog.Color;
 
-                shape.Pen = new Pen(color, penWidth);
+                if (shape != null)
+                {
+                    shape.Pen = new Pen(color, penWidth);
+                }
             }
         }
 
@@ -70,7 +73,7 @@ namespace Simple_Paint
                 btnFillColor.BackColor = colorDialog.Color;
                 fillColor = colorDialog.Color;
                 
-                if (!(shape is Line))
+                if ((!(shape is Line)) && (shape != null))
                 {
                     object[] args = new object[3] { color, fillColor, penWidth };
                     shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
@@ -81,7 +84,10 @@ namespace Simple_Paint
         private void penSize_ValueChanged(object sender, EventArgs e)
         {
             penWidth = (float)penSize.Value;
-            shape.Pen = new Pen(color, penWidth);
+            if (shape != null)
+            {
+                shape.Pen = new Pen(color, penWidth);
+            }
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -121,17 +127,20 @@ namespace Simple_Paint
 
                 listOfShapes.Add(shape);
 
-                // create new instance of shape
-                object[] args;
-                if (shape is Line)
+                if (shape != null)
                 {
-                    args = new object[2] { color, penWidth };
+                    // create new instance of shape
+                    object[] args;
+                    if (shape is Line)
+                    {
+                        args = new object[2] { color, penWidth };
+                    }
+                    else
+                    {
+                        args = new object[3] { color, fillColor, penWidth };
+                    }
+                    shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
                 }
-                else
-                {
-                    args = new object[3] { color, fillColor, penWidth };
-                }
-                shape = (Shape)Activator.CreateInstance(shape.GetType(), args);
             }
         }
 
@@ -329,6 +338,9 @@ namespace Simple_Paint
                 {
                     pictureBox.Image = (Image)Image.FromFile(openFileDialog.FileName).Clone();
                     fileName = String.Copy(openFileDialog.FileName);
+
+                    listOfShapes.Clear();
+                    redoList.Clear();
                 }
 
                 catch (Exception exception)
@@ -336,9 +348,6 @@ namespace Simple_Paint
                     MessageBox.Show("Error: Could not open file. Original error: " + exception.Message);
                 }
             }
-
-            listOfShapes.Clear();
-            redoList.Clear();
         }
         
         // undo 
@@ -378,8 +387,5 @@ namespace Simple_Paint
         {
             MessageBox.Show("Object-oriented programming\n\n\"Simple paint\"\nCreated by Karolina Dubitskaya, gr. 651001\n\nMinsk, 2018", "Simple paint - Lab. work #1-2");
         }
-
-        // TODO hot keys
-        // TODO images
     }
 }

@@ -77,6 +77,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.fileToolStripMenuItem.Text = "Open...";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
@@ -95,7 +96,8 @@
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -103,19 +105,21 @@
             // 
             this.redoToolStripMenuItem.Enabled = false;
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.clearToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -220,6 +224,7 @@
             // 
             this.btnDemo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDemo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnDemo.Image = global::Simple_Paint.Properties.Resources.demo;
             this.btnDemo.Location = new System.Drawing.Point(10, 552);
             this.btnDemo.Name = "btnDemo";
             this.btnDemo.Size = new System.Drawing.Size(42, 40);
@@ -231,6 +236,7 @@
             // 
             this.btnLine.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLine.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnLine.Image = global::Simple_Paint.Properties.Resources.line;
             this.btnLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnLine.Location = new System.Drawing.Point(11, 32);
             this.btnLine.Name = "btnLine";
@@ -243,6 +249,7 @@
             // 
             this.btnEllipse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEllipse.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnEllipse.Image = global::Simple_Paint.Properties.Resources.ellipse;
             this.btnEllipse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnEllipse.Location = new System.Drawing.Point(11, 74);
             this.btnEllipse.Name = "btnEllipse";
@@ -255,6 +262,7 @@
             // 
             this.btnCircle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCircle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnCircle.Image = global::Simple_Paint.Properties.Resources.circle;
             this.btnCircle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnCircle.Location = new System.Drawing.Point(11, 116);
             this.btnCircle.Name = "btnCircle";
@@ -267,6 +275,7 @@
             // 
             this.btnRectangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRectangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnRectangle.Image = global::Simple_Paint.Properties.Resources.rectangle;
             this.btnRectangle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnRectangle.Location = new System.Drawing.Point(11, 158);
             this.btnRectangle.Name = "btnRectangle";
@@ -279,6 +288,7 @@
             // 
             this.btnSquare.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSquare.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnSquare.Image = global::Simple_Paint.Properties.Resources.square;
             this.btnSquare.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSquare.Location = new System.Drawing.Point(11, 200);
             this.btnSquare.Name = "btnSquare";
@@ -291,6 +301,7 @@
             // 
             this.btnIsoscelesTriangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnIsoscelesTriangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnIsoscelesTriangle.Image = global::Simple_Paint.Properties.Resources.triangle;
             this.btnIsoscelesTriangle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnIsoscelesTriangle.Location = new System.Drawing.Point(11, 242);
             this.btnIsoscelesTriangle.Name = "btnIsoscelesTriangle";
@@ -303,6 +314,7 @@
             // 
             this.btnRightTriangle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRightTriangle.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender;
+            this.btnRightTriangle.Image = global::Simple_Paint.Properties.Resources.right_triangle1;
             this.btnRightTriangle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnRightTriangle.Location = new System.Drawing.Point(11, 284);
             this.btnRightTriangle.Name = "btnRightTriangle";
