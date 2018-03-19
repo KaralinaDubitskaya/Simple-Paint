@@ -43,5 +43,27 @@ namespace Simple_Paint
                     shape.Draw(graphics);
             }
         }
+
+        public void Clear()
+        {
+            listOfShapes.Clear();
+        }
+
+        public void Remove(int index)
+        {
+            listOfShapes.RemoveAt(index);
+        }
+
+        public Shape Pop()
+        {
+            if (this.Count != 0)
+            {
+                Shape shape = listOfShapes[this.Count - 1];
+                this.Remove(this.Count - 1);
+                return shape;
+            }
+            else
+                return null;
+        }
     }
 }

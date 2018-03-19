@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace Simple_Paint
 {
     public partial class MainWindow : Form
     {
         private ListOfShapes listOfShapes;
-        private Graphics graphics;
+        private ListOfShapes redoList;
+        
         private Shape shape;
 
         private Color color;
@@ -25,6 +28,10 @@ namespace Simple_Paint
         private Point endPoint;   // coordinates of the endpoint
         private bool isDrawn; // true, when the user is drawing a shape
 
+        private string fileName;
+
+        private const int REDO_BUFFER_SIZE = 20;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +40,7 @@ namespace Simple_Paint
             btnFillColor.BackColor = Color.White;
             
             listOfShapes = new ListOfShapes();
+            redoList = new ListOfShapes();
 
             color = Color.Black;
             fillColor = Color.White;
@@ -42,7 +50,6 @@ namespace Simple_Paint
 
             Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             pictureBox.Image = bitmap;
-            graphics = Graphics.FromImage(pictureBox.Image);
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -128,6 +135,7 @@ namespace Simple_Paint
             }
         }
 
+        #region btnShape_Click
         private void btnLine_Click(object sender, EventArgs e)
         {
             shape = new Line(color, penWidth);
@@ -162,6 +170,7 @@ namespace Simple_Paint
         {
             shape = new RightTriangle(color, fillColor, penWidth);
         }
+        #endregion
 
         // occurs when the control is redrawn
         private void pictureBox_Paint(object sender, PaintEventArgs e)
@@ -292,10 +301,85 @@ namespace Simple_Paint
             // redraw pictureBox
             pictureBox.Refresh();
         }
-        // TODO save & open
-        // TODO undo & redo
-        // TODO cat
-        // TODO save figure
-        // TODO change penWidth
+
+        // clear pictureBox
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+            pictureBox.Image = bitmap;
+
+            listOfShapes.Clear();
+            redoList.Clear();
+        }
+
+        // open file
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog = new OpenFileDialog();
+
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            openFileDialog.Filter = "Image Files(*.jpg; *.bmp; *.png)| *.jpg; *.bmp; *.png";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    pictureBox.Image = (Image)Image.FromFile(openFileDialog.FileName).Clone();
+                    fileName = String.Copy(openFileDialog.FileName);
+                }
+
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Error: Could not open file. Original error: " + exception.Message);
+                }
+            }
+
+            listOfShapes.Clear();
+            redoList.Clear();
+        }
+        
+        // undo 
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            redoToolStripMenuItem.Enabled = true;
+
+            if (redoList.Count > REDO_BUFFER_SIZE)
+            {
+                redoList.Remove(0);
+            }
+            redoList.Add(listOfShapes.Pop());
+
+            pictureBox.Refresh();
+
+            if (listOfShapes.Count == 0)
+            {
+                undoToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listOfShapes.Add(redoList.Pop());
+
+            pictureBox.Refresh();
+
+            if (redoList.Count == 0)
+            {
+                redoToolStripMenuItem.Enabled = false;
+            }
+
+            undoToolStripMenuItem.Enabled = true;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Object-oriented programming\n\n\"Simple paint\"\nCreated by Karolina Dubitskaya, gr. 651001\n\nMinsk, 2018", "Simple paint - Lab. work #1-2");
+        }
+
+        // TODO hot keys
+        // TODO images
     }
 }
