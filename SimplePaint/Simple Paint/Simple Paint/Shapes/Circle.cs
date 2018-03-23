@@ -6,42 +6,29 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace Simple_Paint
-{
+{ 
     public class Circle : Ellipse
     {
-        // TODO coordinates calc
-        private float diameter;
-
         public Circle(Color color, Color fillColor, float penWidth) : base(color, fillColor, penWidth) { }
 
-        public Circle(Point start, Point end, Color color, Color fillColor, float penWidth) : base(start, end, color, fillColor, penWidth)
-        {
-            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
-        }
+        public Circle(Point start, Point end, Color color, Color fillColor, float penWidth) 
+            : base(start, end, color, fillColor, penWidth) { }
 
-        public Circle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) : base(x1, y1, x2, y2, color, fillColor, penWidth)
-        {
-            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
-        }
+        public Circle(int x1, int y1, int x2, int y2, Color color, Color fillColor, float penWidth) 
+            : base(x1, y1, x2, y2, color, fillColor, penWidth) { }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, diameter, diameter);
-            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, diameter, diameter);
-        }
+            Point startPoint = new Point(Math.Min(StartPoint.X, EndPoint.X), Math.Min(StartPoint.Y, EndPoint.Y));
+            Point endPoint = new Point(Math.Max(StartPoint.X, EndPoint.X), Math.Max(StartPoint.Y, EndPoint.Y));
 
-        public override void Draw(Graphics graphics, Point start, Point end)
-        {
-            leftPoint.X = Math.Min(start.X, end.X);
-            leftPoint.Y = Math.Min(start.Y, end.Y);
+            StartPoint = startPoint;
+            EndPoint = endPoint;
 
-            rightPoint.X = Math.Max(start.X, end.X);
-            rightPoint.Y = Math.Max(start.Y, end.Y);
+            float diameter = Math.Max(EndPoint.X - StartPoint.X, EndPoint.Y - StartPoint.Y);
 
-            diameter = Math.Max(rightPoint.X - leftPoint.X, rightPoint.Y - leftPoint.Y);
-
-            graphics.FillEllipse(Brush, leftPoint.X, leftPoint.Y, diameter, diameter);
-            graphics.DrawEllipse(Pen, leftPoint.X, leftPoint.Y, diameter, diameter);
+            graphics.FillEllipse(Brush, StartPoint.X, StartPoint.Y, diameter, diameter);
+            graphics.DrawEllipse(Pen, StartPoint.X, StartPoint.Y, diameter, diameter);
         }
     }
 }

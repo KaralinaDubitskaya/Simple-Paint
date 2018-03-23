@@ -11,12 +11,14 @@ namespace Simple_Paint
     {
         public Pen Pen { get; set; }
 
+        public virtual Point StartPoint { get; set; }
+        public virtual Point EndPoint { get; set; }
+
         public Shape(Color color, float penWidth)
         {
             Pen = new Pen(color, penWidth);
         }
 
         public abstract void Draw(Graphics graphics);
-        public abstract void Draw(Graphics graphics, Point startPoint, Point endPoint);
     }
 }

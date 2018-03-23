@@ -187,7 +187,9 @@ namespace Simple_Paint
             listOfShapes.Draw(e.Graphics);
             if ((shape != null) && isDrawn)
             {
-                shape.Draw(e.Graphics, startPoint, endPoint);
+                shape.StartPoint = startPoint;
+                shape.EndPoint = endPoint;
+                shape.Draw(e.Graphics);
             }
         }
 
